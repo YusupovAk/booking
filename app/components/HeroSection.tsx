@@ -22,7 +22,7 @@ const HeroSection: React.FC = () => {
 
       <div className="relative z-10 max-w-4xl mx-auto w-full">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          Найдите следующее место для отдыха
+          Uzbekistan следующее место для отдыха
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl mb-8 opacity-90 leading-relaxed">
           Ищите отели, дома для отпуска, апартаменты и не только...

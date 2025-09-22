@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
     "axios": "^1.12.2",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.544.0",

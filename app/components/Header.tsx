@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 const Header: React.FC = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -64,9 +65,11 @@ const Header: React.FC = () => {
           <button className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-[#003580] transition">
             Зарегистрироваться
           </button>
-          <button className="bg-[#0071C2] text-white px-4 py-2 rounded hover:bg-[#005aa3] transition">
-            Войти в аккаунт
-          </button>
+          <Link href="/signin">
+            <button className="bg-[#0071C2] text-white px-4 py-2 rounded hover:bg-[#005aa3] transition">
+              Войти в аккаунт
+            </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
