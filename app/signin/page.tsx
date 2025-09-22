@@ -315,8 +315,18 @@ const SignInPage: React.FC = () => {
             </p>
           </div>
 
+          {/* Sign Up Link */}
+          <div className="text-center mt-6">
+            <p className="text-gray-600">
+              Don't have an account?{' '}
+              <Link href="/signup" className="text-[#0071C2] hover:text-[#005A9E] hover:underline font-medium">
+                Create account
+              </Link>
+            </p>
+          </div>
+
           {/* Footer */}
-          <div className="text-center text-xs text-gray-400">
+          <div className="text-center text-xs text-gray-400 mt-8">
             <p className="mb-1">All rights reserved.</p>
             <p>Copyright (2006-2025) – Booking.com™</p>
           </div>
