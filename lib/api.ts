@@ -1,6 +1,31 @@
 import axios from 'axios';
 
 // Mock API for demonstration - replace with real API calls
+export interface Flight {
+  id: string;
+  airline: string;
+  flightNumber: string;
+  departure: {
+    city: string;
+    airport: string;
+    time: string;
+    date: string;
+  };
+  arrival: {
+    city: string;
+    airport: string;
+    time: string;
+    date: string;
+    lat: number;
+    lng: number;
+  };
+  duration: string;
+  price: number;
+  currency: string;
+  availableSeats: number;
+  class: string;
+}
+
 export interface Hotel {
   id: string;
   name: string;
@@ -113,3 +138,33 @@ export const getHotelById = async (id: string): Promise<Hotel | null> => {
 //   // Process response and return formatted hotels
 //   return [];
 // };
+
+export interface BookedFlight {
+  id: string;
+  userId: string;
+  from: string;
+  to: string;
+  departureDate: string;
+  arrivalDate: string;
+}
+
+const mockBookedFlights: BookedFlight[] = [
+  {
+    id: '1',
+    userId: '123', // Mock user ID
+    from: 'JFK',
+    to: 'Tashkent, Uzbekistan',
+    departureDate: '2025-10-10T10:00:00Z',
+    arrivalDate: '2025-10-11T08:00:00Z',
+  },
+];
+
+export const getLatestBookedFlight = async (userId: string): Promise<BookedFlight | null> => {
+  await delay(300);
+  const userFlights = mockBookedFlights.filter(flight => flight.userId === userId);
+  if (userFlights.length === 0) {
+    return null;
+  }
+  // Return the latest flight based on arrival date
+  return userFlights.sort((a, b) => new Date(b.arrivalDate).getTime() - new Date(a.arrivalDate).getTime())[0];
+};

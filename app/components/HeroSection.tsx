@@ -1,8 +1,18 @@
 import React from 'react';
 
-const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  title?: string;
+  subtitle?: string;
+  showTrustIndicators?: boolean;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ 
+  title = 'Найдите следующее место для отдыха', 
+  subtitle = 'Ищите отели, дома для отпуска, апартаменты и не только...', 
+  showTrustIndicators = true 
+}) => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-[#003580] to-[#002050] text-white py-20 px-6 text-center min-h-[70vh] flex items-center">
+    <section className="relative overflow-hidden bg-primary text-primary-foreground py-20 px-6 text-center min-h-[70vh] flex items-center">
       {/* Hero Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
@@ -15,34 +25,35 @@ const HeroSection: React.FC = () => {
 
       {/* Background pattern overlay */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-32 h-32 border border-white rounded-full"></div>
-        <div className="absolute top-20 right-20 w-24 h-24 border border-white rounded-full"></div>
-        <div className="absolute bottom-20 left-1/4 w-16 h-16 border border-white rounded-full"></div>
+        <div className="absolute top-10 left-10 w-32 h-32 border border-primary-foreground rounded-full"></div>
+        <div className="absolute top-20 right-20 w-24 h-24 border border-primary-foreground rounded-full"></div>
+        <div className="absolute bottom-20 left-1/4 w-16 h-16 border border-primary-foreground rounded-full"></div>
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto w-full">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          Найдите следующее место для отдыха
+          {title}
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl mb-8 opacity-90 leading-relaxed">
-          Ищите отели, дома для отпуска, апартаменты и не только...
+          {subtitle}
         </p>
 
-        {/* Trust indicators */}
-        <div className="flex justify-center items-center space-x-8 mt-12 opacity-75">
-          <div className="text-center">
-            <div className="text-2xl font-bold">30M+</div>
-            <div className="text-sm">отелей по всему миру</div>
+        {showTrustIndicators && (
+          <div className="flex justify-center items-center space-x-8 mt-12 opacity-75">
+            <div className="text-center">
+              <div className="text-2xl font-bold">30M+</div>
+              <div className="text-sm">отелей по всему миру</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold">1.5B+</div>
+              <div className="text-sm">отзывов гостей</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold">120+</div>
+              <div className="text-sm">стран</div>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold">1.5B+</div>
-            <div className="text-sm">отзывов гостей</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold">120+</div>
-            <div className="text-sm">стран</div>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );

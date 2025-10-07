@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   images: {
@@ -12,6 +13,17 @@ const nextConfig: NextConfig = {
         hostname: 'via.placeholder.com',
       },
     ],
+  },
+  experimental: {
+    turbo: {
+      resolveAlias: {
+        '@': './app',
+      },
+    },
+  },
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.resolve(__dirname, './app');
+    return config;
   },
 };
 

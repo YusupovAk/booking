@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-secondary text-secondary-foreground">
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
                   <li key={linkIndex}>
                     <a
                       href="#"
-                      className="text-gray-300 hover:text-white transition text-sm"
+                      className="text-muted-foreground hover:text-primary transition text-sm"
                     >
                       {link}
                     </a>
@@ -64,10 +64,10 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-gray-700 pt-8">
+        <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
-            <div className="text-gray-400 text-sm">
+            <div className="text-muted-foreground text-sm">
               © 2024 Booking.com™. Все права защищены.
             </div>
 
@@ -75,26 +75,26 @@ const Footer: React.FC = () => {
             <div className="flex items-center space-x-6">
               {/* Social Icons */}
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition">
+                <a href="#" className="text-muted-foreground hover:text-primary transition">
                   📘 Facebook
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition">
+                <a href="#" className="text-muted-foreground hover:text-primary transition">
                   🐦 Twitter
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition">
+                <a href="#" className="text-muted-foreground hover:text-primary transition">
                   📷 Instagram
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition">
+                <a href="#" className="text-muted-foreground hover:text-primary transition">
                   💼 LinkedIn
                 </a>
               </div>
 
               {/* App Store Badges */}
               <div className="flex space-x-2">
-                <button className="bg-black text-white px-3 py-1 rounded text-xs hover:bg-gray-800 transition">
+                <button className="bg-primary text-primary-foreground px-3 py-1 rounded text-xs hover:bg-primary/90 transition">
                   📱 App Store
                 </button>
-                <button className="bg-black text-white px-3 py-1 rounded text-xs hover:bg-gray-800 transition">
+                <button className="bg-primary text-primary-foreground px-3 py-1 rounded text-xs hover:bg-primary/90 transition">
                   🤖 Google Play
                 </button>
               </div>

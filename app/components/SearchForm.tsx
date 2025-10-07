@@ -101,7 +101,7 @@ const SearchForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white border-2 border-[#FFB000] rounded-lg p-6 mx-6 -mt-8 relative z-10 shadow-xl max-w-6xl mx-auto">
+    <div className="bg-card text-card-foreground border-2 border-primary rounded-lg p-6 mx-6 -mt-8 relative z-10 shadow-xl max-w-6xl mx-auto">
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Work Travel Toggle */}
         <div className="flex items-center space-x-2">
@@ -112,7 +112,7 @@ const SearchForm: React.FC = () => {
             onChange={(e) => setWorkTravel(e.target.checked)}
             className="rounded"
           />
-          <label htmlFor="workTravel" className="text-sm text-gray-600">
+          <label htmlFor="workTravel" className="text-sm text-muted-foreground">
             Я путешествую по работе
           </label>
         </div>
@@ -121,12 +121,12 @@ const SearchForm: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Destination */}
           <div className="relative">
-            <div className={`flex items-center space-x-2 border rounded px-4 py-3 h-14 ${errors.destination ? 'border-red-500' : 'border-gray-300'}`}>
-              <span className="text-gray-400">🏨</span>
+            <div className={`flex items-center space-x-2 border rounded px-4 py-3 h-14 ${errors.destination ? 'border-destructive' : 'border-border'}`}>
+              <span className="text-muted-foreground">🏨</span>
               <input
                 type="text"
                 placeholder="Куда вы хотите поехать?"
-                className="flex-1 outline-none"
+                className="flex-1 outline-none bg-transparent"
                 value={destination}
                 onChange={(e) => {
                   setDestination(e.target.value);
@@ -139,14 +139,14 @@ const SearchForm: React.FC = () => {
                 required
               />
             </div>
-            {errors.destination && <p className="text-red-500 text-sm mt-1">{errors.destination}</p>}
+            {errors.destination && <p className="text-destructive text-sm mt-1">{errors.destination}</p>}
 
             {/* Destination Dropdown */}
             {showDestinationDropdown && (destination || recentSearches.length > 0) && (
-              <div className="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-b-lg shadow-lg z-20 max-h-64 overflow-y-auto">
+              <div className="absolute top-full left-0 right-0 bg-card border border-border rounded-b-lg shadow-lg z-20 max-h-64 overflow-y-auto">
                 {recentSearches.length > 0 && !destination && (
-                  <div className="p-3 border-b border-gray-200">
-                    <div className="text-sm font-medium text-gray-600 mb-2">Недавние поиски</div>
+                  <div className="p-3 border-b border-border">
+                    <div className="text-sm font-medium text-muted-foreground mb-2">Недавние поиски</div>
                     {recentSearches.map((search, index) => (
                       <button
                         key={index}
@@ -155,7 +155,7 @@ const SearchForm: React.FC = () => {
                           setDestination(search);
                           setShowDestinationDropdown(false);
                         }}
-                        className="w-full text-left px-3 py-2 hover:bg-gray-100 rounded"
+                        className="w-full text-left px-3 py-2 hover:bg-accent rounded"
                       >
                         🕐 {search}
                       </button>
@@ -164,7 +164,7 @@ const SearchForm: React.FC = () => {
                 )}
                 {filteredDestinations.length > 0 && (
                   <div className="p-3">
-                    <div className="text-sm font-medium text-gray-600 mb-2">Популярные направления</div>
+                    <div className="text-sm font-medium text-muted-foreground mb-2">Популярные направления</div>
                     {filteredDestinations.slice(0, 5).map((dest, index) => (
                       <button
                         key={index}
@@ -173,7 +173,7 @@ const SearchForm: React.FC = () => {
                           setDestination(dest);
                           setShowDestinationDropdown(false);
                         }}
-                        className="w-full text-left px-3 py-2 hover:bg-gray-100 rounded"
+                        className="w-full text-left px-3 py-2 hover:bg-accent rounded"
                       >
                         📍 {dest}
                       </button>
@@ -186,8 +186,8 @@ const SearchForm: React.FC = () => {
 
           {/* Dates */}
           <div className="relative">
-            <div className={`flex items-center space-x-2 border rounded px-4 py-3 h-14 ${errors.checkIn || errors.checkOut ? 'border-red-500' : 'border-gray-300'}`}>
-              <span className="text-gray-400">📅</span>
+            <div className={`flex items-center space-x-2 border rounded px-4 py-3 h-14 ${errors.checkIn || errors.checkOut ? 'border-destructive' : 'border-border'}`}>
+              <span className="text-muted-foreground">📅</span>
               <div className="flex space-x-2 flex-1">
                 <DatePicker
                   selected={checkIn}
@@ -196,11 +196,11 @@ const SearchForm: React.FC = () => {
                     if (errors.checkIn) setErrors({...errors, checkIn: ''});
                   }}
                   placeholderText="Заезд"
-                  className="outline-none flex-1 text-center"
+                  className="outline-none flex-1 text-center bg-transparent"
                   dateFormat="dd/MM"
                   minDate={new Date()}
                 />
-                <span className="text-gray-400">—</span>
+                <span className="text-muted-foreground">—</span>
                 <DatePicker
                   selected={checkOut}
                   onChange={(date) => {
@@ -208,29 +208,29 @@ const SearchForm: React.FC = () => {
                     if (errors.checkOut) setErrors({...errors, checkOut: ''});
                   }}
                   placeholderText="Отъезд"
-                  className="outline-none flex-1 text-center"
+                  className="outline-none flex-1 text-center bg-transparent"
                   dateFormat="dd/MM"
                   minDate={checkIn || new Date()}
                 />
               </div>
             </div>
             {(errors.checkIn || errors.checkOut) && (
-              <p className="text-red-500 text-sm mt-1">{errors.checkIn || errors.checkOut}</p>
+              <p className="text-destructive text-sm mt-1">{errors.checkIn || errors.checkOut}</p>
             )}
           </div>
 
           {/* Guests */}
           <div className="relative">
-            <div className="flex items-center space-x-2 border border-gray-300 rounded px-4 py-3 h-14 cursor-pointer" onClick={() => setShowGuests(!showGuests)}>
-              <span className="text-gray-400">👥</span>
-              <span className="flex-1 text-gray-700">
+            <div className="flex items-center space-x-2 border border-border rounded px-4 py-3 h-14 cursor-pointer" onClick={() => setShowGuests(!showGuests)}>
+              <span className="text-muted-foreground">👥</span>
+              <span className="flex-1 text-foreground">
                 {adults} взрослых · {children} детей · {rooms} номер
               </span>
-              <span className="text-gray-400">▼</span>
+              <span className="text-muted-foreground">▼</span>
             </div>
 
             {showGuests && (
-              <div className="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-lg mt-1 p-4 z-20 shadow-lg">
+              <div className="absolute top-full left-0 right-0 bg-card border border-border rounded-lg mt-1 p-4 z-20 shadow-lg">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span>Взрослые</span>
@@ -238,7 +238,7 @@ const SearchForm: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setAdults(Math.max(1, adults - 1))}
-                        className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400"
+                        className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:border-primary"
                       >
                         −
                       </button>
@@ -246,7 +246,7 @@ const SearchForm: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setAdults(adults + 1)}
-                        className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400"
+                        className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:border-primary"
                       >
                         +
                       </button>
@@ -258,7 +258,7 @@ const SearchForm: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setChildren(Math.max(0, children - 1))}
-                        className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400"
+                        className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:border-primary"
                       >
                         −
                       </button>
@@ -266,7 +266,7 @@ const SearchForm: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setChildren(children + 1)}
-                        className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400"
+                        className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:border-primary"
                       >
                         +
                       </button>
@@ -278,7 +278,7 @@ const SearchForm: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setRooms(Math.max(1, rooms - 1))}
-                        className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400"
+                        className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:border-primary"
                       >
                         −
                       </button>
@@ -286,7 +286,7 @@ const SearchForm: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setRooms(rooms + 1)}
-                        className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400"
+                        className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:border-primary"
                       >
                         +
                       </button>
@@ -301,7 +301,7 @@ const SearchForm: React.FC = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-gradient-to-r from-[#0071C2] to-[#005aa3] text-white px-8 py-3 rounded-lg hover:from-[#005aa3] hover:to-[#004080] transition-all duration-200 font-semibold h-14 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+            className="bg-primary text-primary-foreground px-8 py-3 rounded-lg hover:bg-primary/90 transition-all duration-200 font-semibold h-14 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
           >
             {isLoading ? 'Поиск...' : 'Найти'}
           </button>

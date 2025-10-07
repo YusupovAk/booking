@@ -16,7 +16,10 @@ export default function Home() {
     <div>
       <Header />
       <NavigationTabs />
-      <HeroSection />
+      <HeroSection 
+        title='Найдите следующее место для отдыха' 
+        subtitle='Ищите отели, дома для отпуска, апартаменты и не только...'
+      />
       <SearchForm />
       <ContentSection />
       <PromotionalBannersSection />
